@@ -32,6 +32,6 @@ https://user-images.githubusercontent.com/109818266/188745487-5d7f9ff4-e84f-4d32
 
 ### A variação no tempo
 
-Para compor a resposta e representar a variação no tempo podemos multiplicar cada fator achado por $e^{-iE_nt/\hbar}$ e conforme disposto no projeto, a solução concebida é parecida com a bidimensional com a adição do tempo que pertencera ao eixo y. 
+Para compor a resposta e representar a variação no tempo podemos multiplicar cada fator achado por $e^{-iE_nt/\hbar}$ e conforme disposto no projeto, a solução concebida variará em x conforme o gráfico e em t ocorrerá uma manipulação acreditando que a equação esteja certa.
 
 ### Método de Crank-Nicolson
