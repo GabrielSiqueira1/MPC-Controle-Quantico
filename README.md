@@ -32,6 +32,18 @@ https://user-images.githubusercontent.com/109818266/188745487-5d7f9ff4-e84f-4d32
 
 ### A variação no tempo
 
-Para compor a resposta e representar a variação no tempo podemos multiplicar cada fator achado por $e^{-iE_nt/\hbar}$ e conforme disposto no projeto, a solução concebida variará em x conforme o gráfico e em t ocorrerá uma manipulação acreditando que a equação esteja certa.
+Para compor a resposta e representar a variação no tempo podemos multiplicar cada fator achado por $e^{-iE_nt/\hbar}$ e conforme disposto no projeto, a solução concebida variará em x conforme o gráfico e em t ocorrerá uma manipulação acreditando que a equação esteja certa. Abaixo, no geogebra, está a manipulação de várias variáveis deixando x fixo. Em p temos a correspondência de t enquanto a e b representam os fatores que realizam a combinação linear das funções de onda.
+
+
+
+https://user-images.githubusercontent.com/109818266/188961006-cef0fb60-cf72-441c-9ba5-5b460ed97863.mp4
+
+Foi percebido que p não acarreta variações nas soluções individuais porém na combinação linear basta uma única variação que ocorre a alteração da curva. Abaixo se tem, em python, duas curvas, onde a primeira, na combinação linear, a segunda solução se sobressai e na segunda curva o inverso acontece.
+
+
+https://user-images.githubusercontent.com/109818266/188962349-3cd07cf5-a207-4c94-8328-cbc62121e870.mp4
+
+
+
 
 ### Método de Crank-Nicolson
