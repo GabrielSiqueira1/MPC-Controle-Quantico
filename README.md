@@ -38,12 +38,10 @@ Para compor a resposta e representar a variação no tempo podemos multiplicar c
 
 https://user-images.githubusercontent.com/109818266/188961006-cef0fb60-cf72-441c-9ba5-5b460ed97863.mp4
 
-Foi percebido que p não acarreta variações nas soluções individuais porém na combinação linear basta uma única variação que ocorre a alteração da curva. Abaixo se tem, em python, duas curvas, onde a primeira, na combinação linear, a segunda solução se sobressai e na segunda curva o inverso acontece.
+Foi percebido que p não acarreta variações nas soluções individuais porém na combinação linear basta uma única variação que ocorre a alteração da curva. Abaixo se tem, em python, duas curvas, a primeira com a manipulação do tempo de 0 até 10 unidades de tempo juntamente com a variação dos valores das constantes que realizam a combinação linear, e dessa forma podemos convergir o seu resultado junto ao Geogebra, e a segunda curva tem as constantes da combinação linear fixas, 0.8 e 0.6.
 
 
-https://user-images.githubusercontent.com/109818266/188962349-3cd07cf5-a207-4c94-8328-cbc62121e870.mp4
-
-
+https://user-images.githubusercontent.com/109818266/188966951-42eed6c6-2f35-49b8-ae0b-15b7f7897821.mp4
 
 
 ### Método de Crank-Nicolson
