@@ -45,3 +45,5 @@ https://user-images.githubusercontent.com/109818266/188966951-42eed6c6-2f35-49b8
 
 
 ### Método de Crank-Nicolson
+
+A prova está apresentada em latex neste mesmo repositório. Veja que a demonstração é diferente da comum, esta seguiu os resultados obtidos pelo pesquisador Dr. Hashimoto T. em 2012. A demonstração do funcionamento do método se separa nos métodos da diferenças finitas, a aproximação de derivadas com a série de Taylor, o Euler explícito e implícito, a Representação Álgebrica e a solução em estado estático.
