@@ -21,7 +21,9 @@ Na imagem abaixo é apresentado a solução para os polinômios 0 e 1, sua compl
 
 Afim de mostrar a transação entre os polinômios de Hermite, construiu-se o gráfico em vermelho, mostrando todas as posições até o polinômio de grau 50.
 
-https://user-images.githubusercontent.com/109818266/188744905-b86a165a-71fa-478f-a492-ec43c457f8bf.mp4
+<div>
+   <img src="gif/curvas.gif" />
+</div>
 
 Para análise completa, recomenda-se visitar o projeto .ipynb.
 
