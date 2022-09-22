@@ -61,4 +61,11 @@ def CrankNicolson(M, L = 1, T = 0.5):
 
     #For para o acúmulo de resultados
     for k in range(1, N):
+        b = np.matmul(matrizB, np.array(ps[0:M, k-1])) #Multiplicação de arrays já que houve uma conversão anterior
+        ps[0:M, k] = np.linalg.solve(matrizA, b) #Matlab: x = A\b
+    return (U, ts, xs)
+
+
+
+        
         
