@@ -16,7 +16,7 @@ Para que seja possível utilizar tal solução, considerou-se um sistema massa m
 Na imagem abaixo é apresentado a solução para os polinômios 0 e 1, sua complementação está disposto no projeto .ipynb.
 
 <div align="center">
-  <img src="curvas.png" />
+  <img src="films/curvas.png" />
 </div>
 
 Afim de mostrar a transação entre os polinômios de Hermite, construiu-se o gráfico em vermelho, mostrando todas as posições até o polinômio de grau 50.
