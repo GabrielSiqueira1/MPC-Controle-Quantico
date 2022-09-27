@@ -21,23 +21,24 @@ Resultados no espaço
 
 De acordo com a teoria proposta para a equação de Schrödinger, a solução para a equação pode ser determinada pela combinação linear de cada $\psi_n(x)$ para todo n pertencente aos naturais. Neste trabalho combinaremos a respostas em 0 e 1 com o valor constante de 0.80 e 0.60 suficiente para que a soma de seus quadrados dê 1. Abaixo estão as curvas com o polinômios de Hermite para graus maiores que 1.
 
-<img src="/img/griffiths.png" />
+<img src="griffiths.png" />
 
-<img src="/img/curvas.png" />
+<img src="curvas.png" />
 
-<img src="/img/curvas2.gif" />
+<img src="curvas2.gif" />
 
 E a combinação está representada abaixo:
 
-<img src="/img/curvas3.gif" />
+<img src="curvas3.gif" />
 
 Resultados no tempo
 ----
 
 Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s com a mesma combinação, 0.80 e 0.60 e a resposta analítica pode ser observada abaixo.
 
-<img src="/img/analiticalAnswer.gif" />
+<img src="analiticalAnswer.gif" />
 
 ## Atividade 2
 
-<img src="/img/pent.gif" />
+<img src="comparative.gif" />
+<img src="plot_METHOD0.png" />
