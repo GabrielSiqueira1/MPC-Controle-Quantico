@@ -1,5 +1,3 @@
-# MPC-Quantum-Computing
-
 ## Atividade 1
 
 Nessa atividade estudaremos a representação de sistemas quânticos por meio da equação de Schrödinger, apresentada abaixo, e sua solução para alguns casos de potenciais simples, como o poço quadrado infinito e o oscilador harmonico simples, este que nos seguirá por toda a pesquisa.
