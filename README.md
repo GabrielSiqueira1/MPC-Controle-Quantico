@@ -62,4 +62,8 @@ $$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u(t))}|^{2}$$
 
 Onde a cada iteração, descobriremos qual é o melhor valor para u(t) por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida para a resposta otimizada, e nesse começo, utilizaremos o ponto de partida do trabalho com as constates 0.80 e 0.60. 
 
-Para realizar esse somatório utilizaremos as respostas anteriores
+Para realizar esse somatório utilizaremos as respostas anteriores e à dimensionaremos 3 pontos a frente de modo à prever sua posição e identificar o menor erro. Dessa forma, para o primeiro teste serão obtidos 3 u's de modo que:
+
+$$\Psi_{N_h} = A^{N_h}\Psi_0$$,
+
+para $N_h$ sendo todos os valores de tempo para u(t) otimizado.
