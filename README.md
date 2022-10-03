@@ -45,3 +45,21 @@ Para a segunda atividade foi necessário entender de que forma poderia se aproxi
 Uma visualização em três dimensões obsevando a aproximação do resultado exato.
 
 <img src="errors.png" />
+
+## Atividade 3
+
+Para essa etapa vamos arbitrar um valor para o potencial de forma que ele seja capaz de transformar a resposta sem alterar as constantes que o regem. Perceba que isso é um teste que utilizará o método MPC de modo a minimizar os erros entre a curva atual e a ideal no fim realizando uma acumulação.
+
+$$V(x,t) = 0.5mw^{2}x^{2} + u(t)$$
+
+E o objetivo é:
+
+$$\Psi(x,0) = \Psi_0(x) -> MPC -> \Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$$
+
+De modo que:
+
+$$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u(t))}|^{2}$$
+
+Onde a cada iteração, descobriremos qual é o melhor valor para u(t) por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida para a resposta otimizada, e nesse começo, utilizaremos o ponto de partida do trabalho com as constates 0.80 e 0.60. 
+
+Para realizar esse somatório utilizaremos as respostas anteriores
