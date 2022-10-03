@@ -66,7 +66,7 @@ A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimi
 
 1. $\Psi_d(x,t) = 1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$
 2. Em um looping de 10 segundos têm-se: 
-- Obtenção da resposta aproximada, matriz, de $\Psi_0(x,t)$ com método de Crank-Nicholson;
+- Obtenção da resposta aproximada, matriz, de psi_c = $\Psi_0(x,t)$ com método de Crank-Nicholson;
 - Somar, na diagonal da matriz obtida, o valor de u(t) para que se possa otimizá-lo;
 - A otimização, em python, segue a seguinte linha de raciocínio:
 
@@ -79,5 +79,6 @@ for x in range(3):
 minimum = optimize.fmin(erro, 1)
 
 ```
-- Com o minimo obtido, substituiremos em $\Psi_n = \sum_{n = 0}^{N_h}A(u(n))\Psi_0$
-3. Esse processo vale para cada mínimo no ponto inicial com o passo de 3 tempos.
+- Com o minimo obtido, substituiremos em $\Psi_1 = A(u(0))\Psi_0$;
+- O $\Psi_1$ se torna o novo psi_c e psi em 1 têm o seu valor plotado;
+- Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
