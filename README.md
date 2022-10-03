@@ -62,8 +62,22 @@ $$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u(t))}|^{2}$$
 
 Onde a cada iteração, descobriremos qual é o melhor valor para u(t) por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida para a resposta otimizada, e nesse começo, utilizaremos o ponto de partida do trabalho com as constates 0.80 e 0.60. 
 
-Para realizar esse somatório utilizaremos as respostas anteriores e à dimensionaremos 3 pontos a frente de modo à prever sua posição e identificar o menor erro. Dessa forma, para o primeiro teste serão obtidos 3 u's de modo que:
+A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimizado para compor a resposta otimizada do sistema. E assim será realizado a cada 3 tempos. A linha de raciocínio do programa que será utilizado se da abaixo:
 
-$$\Psi_{N_h} = A^{N_h}\Psi_0$$,
+1. $\Psi_d(x,t) = 1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$
+2. Em um looping de 10 segundos têm-se: 
+- Obtenção da resposta aproximada, matriz, de $\Psi_0(x,t)$ com método de Crank-Nicholson;
+- Somar, na diagonal da matriz obtida, o valor de u(t) para que se possa otimizá-lo;
+- A otimização, em python, segue a seguinte linha de raciocínio:
 
-para $N_h$ sendo todos os valores de tempo para u(t) otimizado.
+```
+from scipy import optimize
+
+erro = []
+for x in range(3):
+  erro.append(psi_d[0:1000][x] - psi_c[0:1000][x]) # Destino - Crank-Nicholson
+minimum = optimize.fmin(erro, 1)
+
+```
+- Com o minimo obtido, substituiremos em $\Psi_n = \sum_{n = 0}^{N_h}A(u(n))\Psi_0$
+3. Esse processo vale para cada mínimo no ponto inicial com o passo de 3 tempos.
