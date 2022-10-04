@@ -45,3 +45,40 @@ Para a segunda atividade foi necessário entender de que forma poderia se aproxi
 Uma visualização em três dimensões obsevando a aproximação do resultado exato.
 
 <img src="errors.png" />
+
+## Atividade 3
+
+Para essa etapa vamos arbitrar um valor para o potencial de forma que ele seja capaz de transformar a resposta sem alterar as constantes que o regem. Perceba que isso é um teste que utilizará o método MPC de modo a minimizar os erros entre a curva atual e a ideal no fim realizando uma acumulação.
+
+$$V(x,t) = 0.5mw^{2}x^{2} + u(t)$$
+
+E o objetivo é:
+
+$$\Psi(x,0) = \Psi_0(x) -> MPC -> \Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$$
+
+De modo que:
+
+$$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u(t))}|^{2}$$
+
+Onde a cada iteração, descobriremos qual é o melhor valor para u(t) por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida para a resposta otimizada, e nesse começo, utilizaremos o ponto de partida do trabalho com as constates 0.80 e 0.60. 
+
+A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimizado para compor a resposta otimizada do sistema. E assim será realizado a cada 3 tempos. A linha de raciocínio do programa que será utilizado se da abaixo:
+
+1. $\Psi_d(x,t) = 1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$
+2. Em um looping de 10 segundos têm-se: 
+- Obtenção da resposta aproximada, matriz, de psi_c = $\Psi_0(x,t)$ com método de Crank-Nicholson;
+- Somar, na diagonal da matriz obtida, o valor de u(t) para que se possa otimizá-lo;
+- A otimização, em python, segue a seguinte linha de raciocínio:
+
+```
+from scipy import optimize
+
+erro = []
+for x in range(3):
+  erro.append(psi_d[0:1000][x] - psi_c[0:1000][x]) # Destino - Crank-Nicholson
+minimum = optimize.fmin(erro, 1)
+
+```
+- Com o minimo obtido, substituiremos em $\Psi_1 = A(u(0))\Psi_0$;
+- O $\Psi_1$ se torna o novo psi_c e psi em 1 têm o seu valor plotado;
+- Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
