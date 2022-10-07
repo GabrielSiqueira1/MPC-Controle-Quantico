@@ -44,12 +44,16 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
 
 Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação pelo métodod e Crank-Nicolson do qual está demonstrado em arquivo pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
 
-<img src="comparative.gif" />
+<div align="center">
+  <img src="comparative.gif" />
+</div>
 
 Uma visualização em três dimensões obsevando a aproximação do resultado exato.
 
-<img src="errors.png" />
-
+<div align="center">
+  <img src="errors.png" />
+</div>
+  
 ## Atividade 3
 
 Para essa etapa vamos arbitrar um valor para o potencial de forma que ele seja capaz de transformar a resposta sem alterar as constantes que o regem. Perceba que isso é um teste que utilizará o método MPC de modo a minimizar os erros entre a curva atual e a ideal no fim realizando uma acumulação.
@@ -126,15 +130,18 @@ enquanto mpc < 10:
   x0 ← -4 {ponto inicial}
   x∗ {solução encontrada}
   
-  defina kmax; k ← 1; x ← x0
-  enquanto (k < kmax)
-    d ← - gradiente(x)
-    α ← unidimensional(x, d)
-    x ← x + α × d
-    k ← k + 1
+  enquanto (i < 3)
+    func ← |psidxt - psicx|^2
+    defina kmax; k ← 1; x ← x0
+    enquanto (k < kmax)
+      d ← - gradiente(x)
+      α ← unidimensional(x, d)
+      x ← x + α × d
+      k ← k + 1
+    fim enquanto
+    x∗ ← x
+    fim algoritmo
   fim enquanto
-  x∗ ← x
-  fim algoritmo
   
   
   
