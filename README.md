@@ -134,7 +134,7 @@ enquanto mpc < 10:
   u ← 0
   
   enquanto (u+p < 3+p)
-    func ← |psidxt - psicx u|^2
+    func ← |psidxt - psicx_u|^2
     defina kmax; k ← 1; x ← x0
     enquanto (k < kmax)
       d ← - gradiente(x)
