@@ -69,15 +69,16 @@ A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimi
 3. Somente a multiplicação da inversa de A com B
 4. Matriz $A^{-1}$, B previamente criadas e multiplicadas entre si, além da multiplicação por $u^{2}$
 > x varia -5 até 5 com 1000 pontos, o tempo varia de 0 a 10 com 1000 pontos e u varia de -10 a 10 com 1000 pontos
+>
+> Utilizando Crank-Nicholson (Passagem de parâmetro: $\psi_c(x,0)$, matrizDoPonto4, xs, ts, us):
+- Utiliza-se o for já estabelecido em procedimentos anteriores. Esse for irá calcular o valor de $\psi_{i+1}$ utilizando o valor de $\psi_i$
+> Retorna o $\Psi_c(x,t)$ alterado pelas multiplicações das matrizes
 5. Em um looping de 10 segundos têm-se: 
-> Utilizando Crank-Nicholson (Passagem de parâmetro: $\psi_c(x,0)$, matrizDoPonto4, matrizDoPonto3, xs, ts, us):
-- Utiliza-se o for já estabelecido em procedimentos anteriores.
-> Retorna o $\psi_c(x,0)$ alterado pelas multiplicações das matrizes
-6. Utilizaremos o método gradiente, na função $1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2}) - matrizDoPonto4$, especificado pelo professor Rodrigo Cardoso, chutando um ponto inicial em todo domínio real e ainda utilizando como condição de parada, o valor do gradiente
-7. Com o minimo obtido, substituiremos em $\Psi_1 = (matrizDoPonto3 \cdot mínimo)\cdot \Psi_0$
-8. O $\Psi_1$ se torna o novo $psi_c$
+6. Utilizaremos o método gradiente, na função $\Psi_d(x,t) - \Psi_c(x,t)$, especificado pelo professor Rodrigo Cardoso, propondo um ponto inicial em todo domínio real e ainda utilizando como condição de parada o valor do gradiente. Usaremos o passo de 0,01 para encontrar o valor de mínimo.
+> Para o método MPC, iremos realizar o método gradiente cinco vezes
+7. Com o minimo obtido, substituiremos em $\Psi_{i+1} = (matrizDoPonto3 \cdot mínimo[i])\cdot \Psi_{i}$
+8. O $\Psi_{i+1}$ se torna o novo $Psi_c$
 9. Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
-
 
 Pseudocodigo:
 
