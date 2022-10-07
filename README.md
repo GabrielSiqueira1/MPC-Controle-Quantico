@@ -13,28 +13,32 @@ $$\psi_n(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\cdot H_n(x)\cdot \frac
 Para modelar utilizou-se a linguagem python na plataforma jupyter e nesse primeiro momento apresenta-se a resposta analítca. Além disso, supunhou-se que $\omega = \pi$, $\hbar = 1$ e $m = 1$.
 
 -----
-
 Resultados no espaço
 ----
 
 De acordo com a teoria proposta para a equação de Schrödinger, a solução para a equação pode ser determinada pela combinação linear de cada $\psi_n(x)$ para todo n pertencente aos naturais. Neste trabalho combinaremos a respostas em 0 e 1 com o valor constante de 0.80 e 0.60 suficiente para que a soma de seus quadrados dê 1. Abaixo estão as curvas com o polinômios de Hermite para graus maiores que 1.
 
-<img src="griffiths.png" />
-
-<img src="curvas.png" />
-
-<img src="curvas2.gif" />
+<div align="center"> 
+  <img src="griffiths.png" />
+  <img src="curvas.png" />
+  <img src="curvas2.gif" />
+</div>
 
 E a combinação está representada abaixo:
 
-<img src="curvas3.gif" />
+<div align="center">
+  <img src="curvas3.gif" />
+</div>
 
+----
 Resultados no tempo
 ----
 
 Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s com a mesma combinação, 0.80 e 0.60 e a resposta analítica pode ser observada abaixo.
 
-<img src="analiticalAnswer.gif" />
+<div align="center">
+  <img src="analiticalAnswer.gif" />
+</div>
 
 ## Atividade 2
 
@@ -65,23 +69,73 @@ Onde a cada iteração, descobriremos qual é o melhor valor para u(t) por meio 
 A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimizado para compor a resposta otimizada do sistema. E assim será realizado a cada 3 tempos. A linha de raciocínio do programa que será utilizado se da abaixo:
 
 1. $\Psi_d(x,t) = 1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$
-2. Definimos o ponto de partida $\psi_c(x,0) = 0.80\cdot\psi_0(x,0)+0.60\cdot\psi_1(x,0)$ # A cada segundo do looping seguinte, haverá uma troca
+2. Definimos o ponto de partida $\psi_c(x,0) = 0.80\cdot\psi_0(x,0)+0.60\cdot\psi_1(x,1)$
 3. Somente a multiplicação da inversa de A com B
 4. Matriz $A^{-1}$, B previamente criadas e multiplicadas entre si, além da multiplicação por $u^{2}$
-> x varia -5 até 5 com 1000 pontos, o tempo varia de 0 a 10 com 1000 pontos e u varia de -10 a 10 com 1000 pontos
+> x varia -5 até 5 com 1000 pontos, o tempo varia de 0 a 10 com 1000 pontos e u varia de -5 a 5 com 1000 pontos
 >
-> Utilizando Crank-Nicholson (Passagem de parâmetro: $\psi_c(x,0)$, matrizDoPonto4, xs, ts, us):
+> Utilizando Crank-Nicolson (Passagem de parâmetro: $\psi_c(x,0)$, matrizDoPonto4, xs, ts, us):
 - Utiliza-se o for já estabelecido em procedimentos anteriores. Esse for irá calcular o valor de $\psi_{i+1}$ utilizando o valor de $\psi_i$
 > Retorna o $\Psi_c(x,t)$ alterado pelas multiplicações das matrizes
 5. Em um looping de 10 segundos têm-se: 
 6. Utilizaremos o método gradiente, na função $\Psi_d(x,t) - \Psi_c(x,t)$, especificado pelo professor Rodrigo Cardoso, propondo um ponto inicial em todo domínio real e ainda utilizando como condição de parada o valor do gradiente. Usaremos o passo de 0,01 para encontrar o valor de mínimo.
 > Para o método MPC, iremos realizar o método gradiente cinco vezes
 7. Com o minimo obtido, substituiremos em $\Psi_{i+1} = (matrizDoPonto3 \cdot mínimo[i])\cdot \Psi_{i}$
-8. O $\Psi_{i+1}$ se torna o novo $Psi_c$
+8. O $\Psi_{i+1}$ se torna o novo $\Psi_c$
 9. Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
 
 Pseudocodigo:
 
 ```
+# Ondas iniciais
+psidxt ← 1/sqrt(2) * (psi(x,0) * e^(-iwt/2) + psi(x,1) * e^(-3iwt/2))
+psicx ← 0.80 * psi(x,0) * 0.60 * psi(x,1)
 
+# Espaço de pesquisa
+ts ← de 0 a 10 com 1000 pontos
+xs ← de -5 a 5 com 1000 pontos
+us ← de -5 a 5 com 1000 pontos
+
+P ← 3.141111111111111111111111111
+#Discretização espacial
+dx ← 10/(P*M-1) 
+
+#Discretização temporal
+dt ← 5/(P*N-1)
+
+# Produção das matrizes
+a ← hbar/(4*m*dx**2) 
+b ← 1j*hbar/dt - 2*a - 1/2*V
+c ← 1j*hbar/dt + 2*a + 1/2*V
+matrizA ← (1000x1000) 
+matrizB ← (1000x1000)
+
+matrizResultado1 ← matrizA^-1 * matrizB
+funcao matrizAdicional(u):
+  matrizResultado2 ← (matrizA^-1 * matrizB) + diagonal(u^2)
+
+#Aproximação
+
+funcao acumula:
+  enquanto (i < 1000)
+    psi_i+1 ← matrizResultado2 * psi_i
+  fim do enquanto
+  
+enquanto mpc < 10:
+  # Método do gradiente
+  x0 ← -4 {ponto inicial}
+  x∗ {solução encontrada}
+  
+  defina kmax; k ← 1; x ← x0
+  enquanto (k < kmax)
+    d ← - gradiente(x)
+    α ← unidimensional(x, d)
+    x ← x + α × d
+    k ← k + 1
+  fim enquanto
+  x∗ ← x
+  fim algoritmo
+  
+  
+  
 ```
