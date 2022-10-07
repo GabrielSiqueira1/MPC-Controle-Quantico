@@ -83,8 +83,8 @@ A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimi
 > Retorna o $\Psi_c(x,t)$ alterado pelas multiplicações das matrizes
 5. Em um looping de 10 segundos têm-se: 
 6. Utilizaremos o método gradiente, na função $\Psi_d(x,t) - \Psi_c(x,t)$, especificado pelo professor Rodrigo Cardoso, propondo um ponto inicial em todo domínio real e ainda utilizando como condição de parada o valor do gradiente. Usaremos o passo de 0,01 para encontrar o valor de mínimo.
-> Para o método MPC, iremos realizar o método gradiente cinco vezes
-7. Com o minimo obtido, substituiremos em $\Psi_{i+1} = (matrizDoPonto3 \cdot mínimo[i])\cdot \Psi_{i}$
+> Para o método MPC, iremos realizar o método gradiente tr vezes
+7. Com o minimo obtido, substituiremos em $\Psi_{i+1} = (matrizDoPonto3 \cdot mínimo[i]^{2})\cdot \Psi_{i}$
 8. O $\Psi_{i+1}$ se torna o novo $\Psi_c$
 9. Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
 
@@ -124,14 +124,17 @@ funcao acumula:
   enquanto (i < 1000)
     psi_i+1 ← matrizResultado2 * psi_i
   fim do enquanto
-  
+
+p ← 0
 enquanto mpc < 10:
   # Método do gradiente
   x0 ← -4 {ponto inicial}
   x∗ {solução encontrada}
   
-  enquanto (i < 3)
-    func ← |psidxt - psicx|^2
+  u ← 0
+  
+  enquanto (u+p < 3+p)
+    func ← |psidxt - psicx u|^2
     defina kmax; k ← 1; x ← x0
     enquanto (k < kmax)
       d ← - gradiente(x)
@@ -143,6 +146,11 @@ enquanto mpc < 10:
     fim algoritmo
   fim enquanto
   
+  p ← p + 1
   
+  psicx_p ← (matrizResultado1 + x^2) * psicx_p-1
   
+  mpc ← mpc + 0.01
+  
+fim enquanto
 ```
