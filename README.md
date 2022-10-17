@@ -87,4 +87,3 @@ A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimi
 7. Com o minimo obtido, substituiremos em $\Psi_{i+1} = (matrizDoPonto3 \cdot mínimo[i]^{2})\cdot \Psi_{i}$
 8. O $\Psi_{i+1}$ se torna o novo $\Psi_c$
 9. Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
-
