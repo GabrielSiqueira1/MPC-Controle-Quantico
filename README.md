@@ -1,6 +1,6 @@
 ## Atividade 1
 
-Nessa atividade estudaremos a representação de sistemas quânticos por meio da equação de Schrödinger, apresentada abaixo, e sua solução para alguns casos de potenciais simples, como o poço quadrado infinito e o oscilador harmonico simples; esse que nos seguirá por toda a pesquisa.
+Nessa atividade estudaremos a representação de sistemas quânticos por meio da equação de Schrödinger, apresentada abaixo, e sua solução para alguns casos de potenciais simples, como o poço quadrado infinito e o oscilador harmonico simples, este que nos seguirá por toda a pesquisa.
 
 $$i\hbar\cdot\frac{\partial\psi}{\partial t} = \frac{\hbar^{2}}{2m}\cdot\frac{\partial^{2}\psi}{\partial x^{2}}+V(x,t)\psi(x,t)$$
 
@@ -16,7 +16,7 @@ Para modelar utilizou-se a linguagem python na plataforma jupyter e nesse primei
 Resultados no espaço
 ----
 
-De acordo com a teoria proposta para a equação de Schrödinger, a solução para a equação pode ser determinada pela combinação linear de cada $\psi_n(x)$ para todo n pertencente aos naturais. Neste trabalho combinaremos as respostas em 0 e 1 com o valor constante de 0.80 e 0.60 suficiente para que a soma de seus quadrados dê 1. Abaixo estão as curvas com o polinômios de Hermite para graus maiores que 1.
+De acordo com a teoria proposta para a equação de Schrödinger, a solução para a equação pode ser determinada pela combinação linear de cada $\psi_n(x)$ para todo n pertencente aos naturais. Neste trabalho combinaremos a respostas em 0 e 1 com o valor constante de 0.80 e 0.60 suficiente para que a soma de seus quadrados dê 1. Abaixo estão as curvas com o polinômios de Hermite para graus maiores que 1.
 
 <div align="center"> 
   <img src="griffiths.png" />
@@ -42,7 +42,7 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
 
 ## Atividade 2
 
-Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação pelo método de Crank-Nicolson do qual está demonstrado em arquivo pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
+Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação pelo métodod e Crank-Nicolson do qual está demonstrado em arquivo pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
 
 <div align="center">
   <img src="comparative.gif" />
@@ -70,5 +70,87 @@ $$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u(t))}|^{2}$$
 
 Onde a cada iteração, descobriremos qual é o melhor valor para u(t) por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida para a resposta otimizada, e nesse começo, utilizaremos o ponto de partida do trabalho com as constates 0.80 e 0.60. 
 
-A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimizado para compor a resposta otimizada do sistema. E assim será realizado a cada 3 tempos. A linha de raciocínio do programaque se da abaixo:
+A cada extrapolação em 3 tempos otimizados, utilizaremos o tempo inicial otimizado para compor a resposta otimizada do sistema. E assim será realizado a cada 3 tempos. A linha de raciocínio do programa que será utilizado se da abaixo:
 
+1. $\Psi_d(x,t) = 1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$
+2. Definimos o ponto de partida $\psi_c(x,0) = 0.80\cdot\psi_0(x,0)+0.60\cdot\psi_1(x,1)$
+3. Somente a multiplicação da inversa de A com B
+4. Matriz $A^{-1}$, B previamente criadas e multiplicadas entre si, além da multiplicação por $u^{2}$
+> x varia -5 até 5 com 1000 pontos, o tempo varia de 0 a 10 com 1000 pontos e u varia de -5 a 5 com 1000 pontos
+>
+> Utilizando Crank-Nicolson (Passagem de parâmetro: $\psi_c(x,0)$, matrizDoPonto4, xs, ts, us):
+- Utiliza-se o for já estabelecido em procedimentos anteriores. Esse for irá calcular o valor de $\psi_{i+1}$ utilizando o valor de $\psi_i$
+> Retorna o $\Psi_c(x,t)$ alterado pelas multiplicações das matrizes
+5. Em um looping de 10 segundos têm-se: 
+6. Utilizaremos o método gradiente, na função $\Psi_d(x,t) - \Psi_c(x,t)$, especificado pelo professor Rodrigo Cardoso, propondo um ponto inicial em todo domínio real e ainda utilizando como condição de parada o valor do gradiente. Usaremos o passo de 0,01 para encontrar o valor de mínimo.
+> Para o método MPC, iremos realizar o método gradiente tr vezes
+7. Com o minimo obtido, substituiremos em $\Psi_{i+1} = (matrizDoPonto3 \cdot mínimo[i]^{2})\cdot \Psi_{i}$
+8. O $\Psi_{i+1}$ se torna o novo $\Psi_c$
+9. Neste ponto passaram-se 0,01 segundos do looping e novamente há uma otimização até alcançar 10 segundos.
+
+Pseudocodigo:
+
+```
+# Ondas iniciais
+psidxt ← 1/sqrt(2) * (psi(x,0) * e^(-iwt/2) + psi(x,1) * e^(-3iwt/2))
+psicx ← 0.80 * psi(x,0) * 0.60 * psi(x,1)
+
+# Espaço de pesquisa
+ts ← de 0 a 10 com 1000 pontos
+xs ← de -5 a 5 com 1000 pontos
+us ← de -5 a 5 com 1000 pontos
+
+P ← 3.141111111111111111111111111
+#Discretização espacial
+dx ← 10/(P*M-1) 
+
+#Discretização temporal
+dt ← 5/(P*N-1)
+
+# Produção das matrizes
+a ← hbar/(4*m*dx**2) 
+b ← 1j*hbar/dt - 2*a - 1/2*V
+c ← 1j*hbar/dt + 2*a + 1/2*V
+matrizA ← (1000x1000) 
+matrizB ← (1000x1000)
+
+matrizResultado1 ← matrizA^-1 * matrizB
+funcao matrizAdicional(u):
+  matrizResultado2 ← (matrizA^-1 * matrizB) + diagonal(u^2)
+
+#Aproximação
+
+funcao acumula:
+  enquanto (i < 1000)
+    psi_i+1 ← matrizResultado2 * psi_i
+  fim do enquanto
+
+p ← 0
+enquanto mpc < 10:
+  # Método do gradiente
+  x0 ← -4 {ponto inicial}
+  x∗ {solução encontrada}
+  
+  u ← 0
+  
+  enquanto (u+p < 3+p)
+    func ← |psidxt - psicx_u|^2
+    defina kmax; k ← 1; x ← x0
+    enquanto (k < kmax)
+      d ← - gradiente(x)
+      α ← unidimensional(x, d)
+      x ← x + α × d
+      k ← k + 1
+    fim enquanto
+    x∗ ← x
+    fim algoritmo
+  fim enquanto
+  
+  p ← p + 1
+  
+  psicx_p ← (matrizResultado1 + x^2) * psicx_p-1
+  
+  mpc ← mpc + 0.01
+  
+fim enquanto
+```
