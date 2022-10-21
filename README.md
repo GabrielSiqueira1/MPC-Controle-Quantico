@@ -75,11 +75,11 @@ A cada iteração, descobriremos qual é o melhor valor para u(t) por meio de um
 A primeira estratégia utilizada é a utilização do método do Gradiente sem a utilização da Seção Áurea cujo o objetivo é a otimização do passo da análise. Como proposto, a cada menor valor obtido desse sistema, obteremos o futuro da onda que por sua vez deve ser discretizada em Crank-Nicolson, no entanto, esse processo não parece eficaz e para isso realizou-se dois processos, o primeiro que ajusta a curva sem o uso do CN e o segundo utilizando. 
 
 <div align="center">
-  <img src="QuantControl.png" />
+  <img src="QuantControl.gif" />
 </div>
 
 <div align="center">
-  <img src="QuantControl2.png" />
+  <img src="QuantControl2.gif" />
 </div>
 
 </div>
