@@ -72,4 +72,14 @@ $$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u(t))}|^{2}$$
 
 A cada iteração, descobriremos qual é o melhor valor para u(t) por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida para a resposta otimizada, e nesse começo, utilizaremos o ponto de partida do trabalho com as constantes 0.80 e 0.60. 
 
+A primeira estratégia utilizada é a utilização do método do Gradiente sem a utilização da Seção Áurea cujo o objetivo é a otimização do passo da análise. Como proposto, a cada menor valor obtido desse sistema, obteremos o futuro da onda que por sua vez deve ser discretizada em Crank-Nicolson, no entanto, esse processo não parece eficaz e para isso realizou-se dois processos, o primeiro que ajusta a curva sem o uso do CN e o segundo utilizando. 
+
+<div align="center">
+  <img src="QuantControl.png" />
+</div>
+
+<div align="center">
+  <img src="QuantControl2.png" />
+</div>
+
 </div>
