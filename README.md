@@ -44,14 +44,12 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
 
 ## Atividade 2
 
-Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação pelo métodod e Crank-Nicolson do qual está demonstrado em arquivo pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
+Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC_Controle-Quantico/blob/main/Demonstra%C3%A7%C3%A3o.pdf) pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
 
 <div align="center">
   <img src="comparative.gif" />
 </div>
-
-Uma visualização em três dimensões obsevando a aproximação do resultado exato.
-
+  
 <div align="center">
   <img src="errors.png" />
 </div>
