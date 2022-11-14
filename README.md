@@ -123,13 +123,13 @@ Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} =
 <div align="center">
   <img src="results/fourth/real0.png" />
 </div>
-    <div align="center">
+<div align="center">
   <img src="results/fourth/real1.png" />
 </div>
 <div align="center">
   <img src="results/fourth/imag0.png" />
 </div>
-    <div align="center">
+<div align="center">
   <img src="results/fourth/imag1.png" />
 </div>
     
