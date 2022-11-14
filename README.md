@@ -44,7 +44,7 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
 
 ## Atividade 2
 
-Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC_Controle-Quantico/blob/main/demonstracao.pdf) pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
+Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC_Controle-Quantico/blob/main/demonstracao-CrankNicolson.pdf) pdf nesse repositório. Nesse método ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
 
 <div align="center">
   <img src="results/second/comparative.gif" />
@@ -96,8 +96,44 @@ $$\frac{\partial}{\partial t}\Psi = -\frac{iH}{\hbar}\Psi$$
 
 Ademais, é necessário transportar essa equação para a notação de bras e kets utilizada em controle, computação e mecânica quântica moderna.
 
-#### Ket e Bras - Controle Quântico
+### Ket e Bras - Controle Quântico
 
 $$\frac{\partial}{\partial t}\\ket{\Psi} = -\frac{iH}{\hbar}\\ket{\Psi}$$
+    
+### Resposta analítica
+    
+Para a equação acima, a solução analítica se da por $\\ket{\Psi(t)} = e^{\frac{-iHt}{\hbar}}\\ket{\Psi_0}$, onde H é um hamiltoniano, então teremos uma exponencial matricial, que deve ser resolvida por polinômio de Taylor. O Hamiltoniano abaixo foi desenvolvido a partir do livro do [Professor Piza (2003)](https://www.fisica.net/mecanica-quantica/mecanica_quantica_por_a_f_r_de_toledo_piza.pdf).
+    
+$$H_0 = 
+\left(\begin{array}{cc} 
+0 & 0\\ 
+0 & (frac{-3i\pi t}{2} - frac{-i\pi t}{2})
+\end{array}\right)$$
+    
+Outro hamiltoniano possível é aquele em que as energias ficam na diagonal principal, dessa forma, obtemos:
+    
+$$H_0 = 
+\left(\begin{array}{cc} 
+frac{-i\pi t}{2} & 0\\ 
+0 & frac{-3i\pi t}{2}
+\end{array}\right)$$
+    
+Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} = H_0\\ket{\Psi_0} = \\ket{\Psi(t)} = H_0(0.80\cdot\\ket 0 + 0.60\cdot\\ket 1)$, real e imaginário.
+    
+<div align="center">
+  <img src="results/fourth/real0.png" />
+</div>
+    <div align="center">
+  <img src="results/fourth/real1.png" />
+</div>
+<div align="center">
+  <img src="results/fourth/imag0.png" />
+</div>
+    <div align="center">
+  <img src="results/fourth/imag1.png" />
+</div>
+    
+O objetivo do controle é reduzir essa oscilação e tornar constante o valor para que alcanssemos outro estado. No entanto, o processo analítico não é replicável em laboratório, dessa forma, devemos usar aproximações, utilizaremos a aproximação de Euler e de Runge-Kutta de quarta ordem, aproximações esta que servem para a derivada.
+    
 
 </div>
