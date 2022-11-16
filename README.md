@@ -120,14 +120,14 @@ $$H_0 =
     
 Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} = H_0\\ket{\Psi_0} = \\ket{\Psi(t)} = H_0(0.80\cdot\\ket 0 + 0.60\cdot\\ket 1)$, real e imaginário.
 
-    <div align="center">Real</div>
+<div align="center">Real</div>
 <div align="center">
   <img src="results/fourth/real0.png" />
 </div>
 <div align="center">
   <img src="results/fourth/real1.png" />
 </div>
-    <div align="center">Imaginário</div>
+<div align="center">Imaginário</div>
 <div align="center">
   <img src="results/fourth/imag0.png" />
 </div>
