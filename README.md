@@ -107,25 +107,27 @@ Para a equação acima, a solução analítica se da por $\\ket{\Psi(t)} = e^{\f
 $$H_0 = 
 \left(\begin{array}{cc} 
 0 & 0\\ 
-0 & (frac{-3i\pi t}{2} - frac{-i\pi t}{2})
+0 & (\frac{-3i\pi t}{2} - \frac{-i\pi t}{2})
 \end{array}\right)$$
     
 Outro hamiltoniano possível é aquele em que as energias ficam na diagonal principal, dessa forma, obtemos:
     
 $$H_0 = 
 \left(\begin{array}{cc} 
-frac{-i\pi t}{2} & 0\\ 
-0 & frac{-3i\pi t}{2}
+\frac{-i\pi t}{2} & 0\\ 
+0 & \frac{-3i\pi t}{2}
 \end{array}\right)$$
     
 Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} = H_0\\ket{\Psi_0} = \\ket{\Psi(t)} = H_0(0.80\cdot\\ket 0 + 0.60\cdot\\ket 1)$, real e imaginário.
-    
+
+    <div align="center">Real</div>
 <div align="center">
   <img src="results/fourth/real0.png" />
 </div>
 <div align="center">
   <img src="results/fourth/real1.png" />
 </div>
+    <div align="center">Imaginário</div>
 <div align="center">
   <img src="results/fourth/imag0.png" />
 </div>
@@ -133,7 +135,27 @@ Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} =
   <img src="results/fourth/imag1.png" />
 </div>
     
-O objetivo do controle é reduzir essa oscilação e tornar constante o valor para que alcanssemos outro estado. No entanto, o processo analítico não é replicável em laboratório, dessa forma, devemos usar aproximações, utilizaremos a aproximação de Euler e de Runge-Kutta de quarta ordem, aproximações esta que servem para a derivada.
+O objetivo do controle é reduzir essa oscilação e tornar constante o valor para que alcansemos outro estado. No entanto, o processo analítico não é replicável em laboratório, dessa forma, devemos usar aproximações para a derivada. No arquivo Heisenberg-Euler-Runge_Kutta estabelece uma comparação entre os métodos e o Runge Kutta de quarto grau é o ideal para o avanço do trabalho.
+    
+<div align="center">Real</div>
+<div align="center">
+  <img src="results/fourth/rk_real0.png" />
+</div>
+    <div align="center">
+  <img src="results/fourth/rk_real1.png" />
+</div>
+    
+<div align="center">Imaginário</div>
+<div align="center">
+  <img src="results/fourth/rk_imag0.png" />
+</div>
+<div align="center">
+  <img src="results/fourth/rk_imag1.png" />
+</div>
+
+### Controle quântico
+    
+
     
 
 </div>
