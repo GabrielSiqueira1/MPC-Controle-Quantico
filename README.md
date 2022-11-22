@@ -152,10 +152,16 @@ O objetivo do controle é reduzir essa oscilação e tornar constante o valor pa
 <div align="center">
   <img src="results/fourth/rk_imag1.png" />
 </div>
+    
+<div align="center">Comparação</div>
+<div align="center">
+  <img src="results/fourth/comparative.png" />
+</div>
 
 ### Controle quântico
     
-
+Para esse controle do sistema utilizaremos um horizonte de análise de forma a prever a próxima posição ajustada, além disso, a matriz de energia sempre será alterada a partir do mínimo encontrado com o método de otimização não linear e o objetivo é alcançar um mínimo a 0, já que a nossa função objetivo é baseada em uma subtração com a intenção de que a subtração seja a menor possível.
     
+
 
 </div>
