@@ -1,6 +1,16 @@
 <div align='justify'>
 
-## Atividade 1
+# Procedimentos inciais
+
+O seguinte trabalho utilizou-se da plataforma jupyter com o objetivo de exibir e utilizar atividades em python. Para tal, usou-se o miniconda em sua versão 3.9 e ainda a pesquisa fora realizada no sistema operacional Linux, portanto as bibliotecas utilizadas podem ser instaladas com o código abaixo:
+
+```
+conda install numpy scipy matplotlib jupyter ipython ffmpeg sympy
+```
+
+Como estudante de engenharia de computação, se torna importante estudar os diferentes métodos de controle existentes no mercado, para tal, através desse artigo, incentiva-se a pesquisa ao redor do controle de partículas. Esse projeto se trata de uma interdisciplinariedade entre os cursos de engenharia de computação, engenharia elétrica, física e matemática.
+
+## Atividade 1 - Comportamento da onda
 
 Nessa atividade estudaremos a representação de sistemas quânticos por meio da equação de Schrödinger apresentada abaixo, e sua solução para alguns casos de potenciais simples, como o poço quadrado infinito e o oscilador harmonico simples; este que nos seguirá por toda a pesquisa.
 
@@ -12,7 +22,7 @@ $$V(x) = 0.5mw^{2}x^{2}$$
 
 $$\psi_n(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\cdot H_n(x)\cdot \frac{1}{\sqrt{2^nn!}}e^{0.5x^2}$$
 
-Para modelar utilizou-se a linguagem python na plataforma jupyter e nesse primeiro momento apresenta-se a resposta analítca. Além disso, supôs-se que $\omega = \pi$, $\hbar = 1$ e $m = 1$.
+Para a modelagem da parte analítca utilizou-se os seguintes parâmetros: $\omega = \pi$, $\hbar = 1$ e $m = 1$.
 
 -----
 Resultados no espaço
@@ -42,7 +52,7 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
   <img src="results/first/analiticalAnswer.gif" />
 </div>
 
-## Atividade 2
+## Atividade 2 - Aproximação das derivadas
 
 Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC_Controle-Quantico/blob/main/demonstracao-CrankNicolson.pdf) pdf nesse repositório. Nesse método, ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
 
@@ -53,8 +63,10 @@ Para a segunda atividade foi necessário entender de que forma poderia se aproxi
 <div align="center">
   <img src="results/second/errors.png" />
 </div>
+
+Vale ressaltar que os erros dos quais realizam uma comparação com zero apresentam uma tendência a ir ao infinito devido a sua divisão, no entanto, isso não invalida a aproximação.
   
-## Atividade 3
+## Atividade 3 - Realização do controle
 
 Para essa etapa vamos arbitrar um valor para o potencial de forma que ele seja capaz de transformar a resposta sem alterar as constantes que o regem. Perceba que isso é um teste que utilizará o método MPC de modo a minimizar os erros entre a curva atual e a ideal no fim realizando uma acumulação.
 
@@ -66,11 +78,11 @@ $$\Psi(x,0) = \Psi_0(x) -> MPC -> \Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi
 
 De modo que a seguinte operação resulte no menor valor possível:
 
-$$E = \sum_{n = p}^{p+N_h}|\Psi_d(x,t) - \Psi_{i}^{n(u)}|^{2}$$
+$$E = \sum_{n = p}^{p+N_h}||\Psi_d(x,t) - \Psi_{i}^{n(u)}||^{2}$$
 
-A cada iteração, descobriremos qual é o melhor valor para u por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida do horizonte analisável. Para a primeira etapa seguiremos com o horizonte de tamanho 2, dessa forma, p começa em 0 e irá até 2 e na próxima iteração, começaremos em 1 até 3, sempre acumulando o  resultado anterior.
+A cada iteração, descobriremos qual é o melhor valor para u por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida do horizonte analisável. Para a primeira etapa seguiremos com o horizonte de tamanho 2, dessa forma, p começa em 0 e irá até 2 e na próxima iteração, começaremos em 1 até 3, sempre acumulando o  resultado anterior para o caso de $\psi$.
 
-É uma análise custosa por causa da proposta inicial, a matriz 1000x1000. Para isso, fora realizado testes com matrizes de 100x100 até 500x500, sendo de 100x100 até 400x400 utilizando o método de otimização gradiente e a matriz 500x500 utilizou-se da otimização da biblioteca sympy com o método SLSQP.
+É uma análise custosa por causa da proposta inicial, a matriz 1000x1000, já que estamos usando a resposta analítica e essa depende do espaço de x que é $RxR$. Para isso, fora realizado testes com matrizes de 100x100 até 500x500, sendo de 100x100 até 400x400 utilizando o método de otimização gradiente e a matriz 500x500 utilizou-se da otimização da biblioteca sympy com o método SLSQP.
 
 Com gradiente:
 <div align="center">
@@ -88,9 +100,9 @@ Com a biblioteca, em primeiro temos uma curva estacionária e em segundo, uma cu
   <img src="results/third/500x500_version2.gif" />
 </div>
 
-Existe uma dificuldade de controlar essa curva visto que o V(x,t) oferece pouquissímos graus de liberdade para o controle ótimo, além disso há uma representação da curva em função do tempo e espaço o que é inviável pois o espaço de solução é R.
+Existe uma dificuldade de controlar essa curva visto que o V(x,t) oferece pouquissímos graus de liberdade para o controle ótimo, além disso há uma representação da curva em função do tempo e espaço o que é inviável pois o espaço de solução é $R^{2}$.
 
-Para contornar esse problema recorremos a representação de Heisenberg, que retira a contribuição espacial e relaciona energia de estado. O problema que incialmente era uma matriz RxR se torna 2x2, afinal, são dois estados de energia.
+Para contornar esse problema recorremos a representação de Heisenberg, que retira a contribuição espacial e relaciona energia de estado. O problema que incialmente era uma matriz $RxR$ se torna 2x2, afinal, são dois estados de energia.
 
 $$\frac{\partial}{\partial t}\Psi = -\frac{iH}{\hbar}\Psi$$
 
@@ -162,6 +174,24 @@ O objetivo do controle é reduzir essa oscilação e tornar constante o valor pa
     
 Para esse controle do sistema utilizaremos um horizonte de análise de forma a prever a próxima posição ajustada, além disso, a matriz de energia sempre será alterada a partir do mínimo encontrado com o método de otimização não linear e o objetivo é alcançar um mínimo a 0, já que a nossa função objetivo é baseada em uma subtração com a intenção de que a subtração seja a menor possível.
     
+<div align="center">Controle real para 0.80</div>
+<div align="center">
+  <img src="results/fifth/rk_otimo1.png" />
+</div>
 
+<div align="center">Controle imaginário para 0.80</div>
+<div align="center">
+  <img src="results/fifth/rk_otimo2.png" />
+</div>
+
+<div align="center">Controle real para 0.60</div>
+<div align="center">
+  <img src="results/fifth/rk_otimo3.png" />
+</div>
+
+<div align="center">Controle imaginário para 0.60</div>
+<div align="center">
+  <img src="results/fifth/rk_otimo4.png" />
+</div>	
 
 </div>
