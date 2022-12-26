@@ -1,8 +1,10 @@
 <div align='justify'>
 
-# Procedimentos inciais
+# Controle Quântico Ótimo
 
-O seguinte trabalho utilizou-se da plataforma jupyter com o objetivo de exibir e utilizar atividades em python. Para tal, usou-se o miniconda em sua versão 3.9 e ainda a pesquisa fora realizada no sistema operacional Linux, portanto as bibliotecas utilizadas podem ser instaladas com o código abaixo:
+## Procedimentos iniciais
+
+O seguinte trabalho utilizou-se da plataforma jupyter com o objetivo de exibir e utilizar atividades em python. Para tal, usou-se o miniconda em sua versão 3.9 com a adição das seguintes propriedades:
 
 ```
 conda install numpy scipy matplotlib jupyter ipython ffmpeg sympy
@@ -16,7 +18,7 @@ Nessa atividade estudaremos a representação de sistemas quânticos por meio da
 
 $$i\hbar\cdot\frac{\partial\psi}{\partial t} = \frac{\hbar^{2}}{2m}\cdot\frac{\partial^{2}\psi}{\partial x^{2}}+V(x,t)\psi(x,t)$$
 
-A solução apresentada no [artigo do Dr. Hashimoto](https://ieeexplore.ieee.org/document/6318710) é para o sistema do poço quadrado infinito e é suficiente para entender o processo de discretização e obtenção do resultado. Utilizando o livro base da Mecânica Quântica, por David Griffiths, utilizaremos a resposta para o oscilador harmônico juntamente dos polinômios de Hermite para modelar sua reposta analítica e usar o artigo para discretizar para o sistema OHS, portanto:
+A solução apresentada no [artigo do Dr. Hashimoto](https://ieeexplore.ieee.org/document/6318710) é para o sistema do poço quadrado infinito e é suficiente para entender o processo de discretização e obtenção do resultado. Utilizando o livro base da Mecânica Quântica, por David Griffiths, usaremos a resposta para o oscilador harmônico juntamente dos polinômios de Hermite para modelar sua reposta analítica e usar o artigo para discretizar para o sistema OHS, portanto:
 
 $$V(x) = 0.5mw^{2}x^{2}$$
 
@@ -57,11 +59,15 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
 Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC_Controle-Quantico/blob/main/demonstracao-CrankNicolson.pdf) pdf nesse repositório. Nesse método, ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
 
 <div align="center">
-  <img src="results/second/comparative.gif" />
+  <img src="results/second/comparative2.gif" />
 </div>
   
 <div align="center">
-  <img src="results/second/errors.png" />
+  <img src="results/second/errors1.png" />
+</div>
+
+<div align="center">
+  <img src="results/second/errors2.png" />
 </div>
 
 Vale ressaltar que os erros dos quais realizam uma comparação com zero apresentam uma tendência a ir ao infinito devido a sua divisão, no entanto, isso não invalida a aproximação.
@@ -132,15 +138,15 @@ $$H_0 =
     
 Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} = H_0\\ket{\Psi_0} = \\ket{\Psi(t)} = H_0(0.80\cdot\\ket 0 + 0.60\cdot\\ket 1)$, real e imaginário.
 
-<div align="center">Real</div>
 <div align="center">
+  <h3>Gráfico - Real</h3>
   <img src="results/fourth/real0.png" />
 </div>
 <div align="center">
   <img src="results/fourth/real1.png" />
 </div>
-<div align="center">Imaginário</div>
 <div align="center">
+  <h3>Gráfico - Imaginário</h3>
   <img src="results/fourth/imag0.png" />
 </div>
 <div align="center">
@@ -149,24 +155,24 @@ Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} =
     
 O objetivo do controle é reduzir essa oscilação e tornar constante o valor para que alcansemos outro estado. No entanto, o processo analítico não é replicável em laboratório, dessa forma, devemos usar aproximações para a derivada. No arquivo Heisenberg-Euler-Runge_Kutta estabelece uma comparação entre os métodos e o Runge Kutta de quarto grau é o ideal para o avanço do trabalho.
     
-<div align="center">Real</div>
 <div align="center">
+  <h3>Gráfico - Real</h3>
   <img src="results/fourth/rk_real0.png" />
 </div>
     <div align="center">
   <img src="results/fourth/rk_real1.png" />
 </div>
     
-<div align="center">Imaginário</div>
 <div align="center">
+  <h3>Gráfico - Imaginário</h3>
   <img src="results/fourth/rk_imag0.png" />
 </div>
 <div align="center">
   <img src="results/fourth/rk_imag1.png" />
 </div>
     
-<div align="center">Comparação</div>
 <div align="center">
+  <h3>Comparação</h3>
   <img src="results/fourth/comparative.png" />
 </div>
 
@@ -174,24 +180,29 @@ O objetivo do controle é reduzir essa oscilação e tornar constante o valor pa
     
 Para esse controle do sistema utilizaremos um horizonte de análise de forma a prever a próxima posição ajustada, além disso, a matriz de energia sempre será alterada a partir do mínimo encontrado com o método de otimização não linear e o objetivo é alcançar um mínimo a 0, já que a nossa função objetivo é baseada em uma subtração com a intenção de que a subtração seja a menor possível.
     
-<div align="center">Controle real para 0.80</div>
 <div align="center">
+  <h3>Controle real para 0.80</h3>
   <img src="results/fifth/rk_otimo1.png" />
 </div>
 
-<div align="center">Controle imaginário para 0.80</div>
+
 <div align="center">
+  <h3>Controle imaginário para 0.80</h3>
   <img src="results/fifth/rk_otimo2.png" />
 </div>
 
-<div align="center">Controle real para 0.60</div>
 <div align="center">
+  <h3>Controle real para 0.60</h3>
   <img src="results/fifth/rk_otimo3.png" />
 </div>
 
-<div align="center">Controle imaginário para 0.60</div>
 <div align="center">
+  <h3>Controle imaginário para 0.60</h3>
   <img src="results/fifth/rk_otimo4.png" />
 </div>	
+
+## 4. Aprofundamento do estudos
+
+Ainda é necessário analisar de que forma o método de controle, baseado em otimização, causa a defasagem apresentada. Além disso, é interessante identificar se as constantes, após o controle, permancem dentro do limite já estabelecido, do qual a soma dos seus quadrados devem resultar em 1. 
 
 </div>
