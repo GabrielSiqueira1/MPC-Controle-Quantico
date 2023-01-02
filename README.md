@@ -10,11 +10,11 @@ O seguinte trabalho utilizou-se da plataforma jupyter com o objetivo de exibir e
 conda install numpy scipy matplotlib jupyter ipython ffmpeg sympy
 ```
 
-Como estudante de engenharia de computação, se torna importante estudar os diferentes métodos de controle existentes no mercado, para tal, através desse artigo, incentiva-se a pesquisa ao redor do controle de partículas. Esse projeto se trata de uma interdisciplinariedade entre os cursos de engenharia de computação, engenharia elétrica, física e matemática.
+Como estudante de engenharia de computação, se torna importante estudar os diferentes métodos de controle existentes no mercado e para tal, através desse artigo, incentiva-se a pesquisa ao redor do controle de partículas com o uso do Modelo Preditivo de Controle. Esse projeto se trata de uma interdisciplinariedade entre os cursos de engenharia de computação, engenharia elétrica, física e matemática. Com o advento dessa pesquisa, projeta-se a instauração das disciplinas de Introdução a Computação Quântica e Introdução a Modelagem Matemática.
 
 ## Atividade 1 - Comportamento da onda
 
-Nessa atividade estudaremos a representação de sistemas quânticos por meio da equação de Schrödinger apresentada abaixo, e sua solução para alguns casos de potenciais simples, como o poço quadrado infinito e o oscilador harmonico simples; este que nos seguirá por toda a pesquisa.
+Nessa atividade estudaremos a representação de sistemas quânticos por meio da equação de Schrödinger, apresentada abaixo, e sua solução para o caso do oscilador harmônico simples.
 
 $$i\hbar\cdot\frac{\partial\psi}{\partial t} = \frac{\hbar^{2}}{2m}\cdot\frac{\partial^{2}\psi}{\partial x^{2}}+V(x,t)\psi(x,t)$$
 
@@ -45,7 +45,7 @@ E a combinação está representada abaixo:
 </div>
 
 ----
-Resultados no tempo
+Resultados no espaço-tempo
 ----
 
 Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s, dessa forma obtendo uma oscilação.
