@@ -185,7 +185,6 @@ Para esse controle do sistema utilizaremos um horizonte de análise de forma a p
   <img src="results/fifth/rk_otimo1.png" />
 </div>
 
-
 <div align="center">
   <h3>Controle imaginário para 0.80</h3>
   <img src="results/fifth/rk_otimo2.png" />
@@ -204,5 +203,17 @@ Para esse controle do sistema utilizaremos um horizonte de análise de forma a p
 ## 4. Aprofundamento do estudos
 
 Ainda é necessário analisar de que forma o método de controle, baseado em otimização, causa a defasagem apresentada. Além disso, é interessante identificar se as constantes, após o controle, permancem dentro do limite já estabelecido, do qual a soma dos seus quadrados devem resultar em 1. 
+    
+<div align="center">
+  <h3>Defasagens</h3>
+  <img src="results/sixth/phases.png" />
+</div>
+    
+
+
+<div align="center">
+  <h3>Constantes</h3>
+  <img src="results/sixth/const.png" />
+</div>
 
 </div>
