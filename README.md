@@ -214,6 +214,6 @@ Ainda é necessário analisar de que forma o método de controle, baseado em oti
   <img src="results/sixth/const.png" />
 </div>
     
-Conforme a teoria de computação quântica descrita no livro introdução a computação quântica de Thomas Wong (2022), quando a desafagem é a mesma em todas as componentes, não há um real significado físico não interferindo nos processos de análise. Além disso, com a segunda imagem é possível identificar que os coeficientes 0.80, em vermelho e 0.60 em azul, convergem para o valor em verde, $1/sqrt(2)$.
+Conforme a teoria de computação quântica descrita no livro introdução a computação quântica de Thomas Wong (2022), quando a desafagem é a mesma em todas as componentes, não há um real significado físico não interferindo nos processos de análise. Além disso, com a segunda imagem é possível identificar que os coeficientes 0.80, em vermelho e 0.60 em azul, convergem para o valor em verde, $1/\sqrt(2)$.
 
 </div>
