@@ -50,7 +50,7 @@ A resposta com a combinação de 0 e 1 se torna importante pois se trata de um s
 Resultados no espaço-tempo
 ----
 
-Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s, dessa forma obtendo uma oscilação.
+Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s, dessa forma obtendo uma oscilação (Griffiths, David. 2011).
 
 <div align="center">
   <img src="results/first/analiticalAnswer.gif" />
@@ -58,7 +58,7 @@ Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-
 
 ## Atividade 2 - Aproximação das derivadas
 
-Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC-Controle-Quantico/blob/main/demonstracao/demonstracao-CrankNicolson.pdf) pdf nesse repositório. Nesse método, ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo além da representação dos erros absolutos e relativos.
+Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC-Controle-Quantico/blob/main/demonstracao/demonstracao-CrankNicolson.pdf) pdf nesse repositório. Nesse método, ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo, entre o método de aproximaçe a referência, além da representação dos erros absolutos e relativos.
 
 <div align="center">
   <img src="results/second/comparative2.gif" />
