@@ -4,13 +4,13 @@
 
 ## Procedimentos iniciais
 
-O seguinte trabalho utilizou-se da plataforma jupyter com o objetivo de exibir e utilizar atividades em python. Para tal, usou-se o miniconda em sua versão 3.9 com a adição das seguintes propriedades:
+Para o seguinte trabalho utilizou-se da plataforma jupyter com o objetivo de exibir e utilizar atividades em python. Para tal, usou-se o miniconda em sua versão 3.9 com a adição das seguintes propriedades:
 
 ```
 conda install numpy scipy matplotlib jupyter ipython ffmpeg sympy
 ```
 
-Como estudante de engenharia de computação, se torna importante estudar os diferentes métodos de controle existentes no mercado e, através desse artigo, incentiva-se a pesquisa ao redor do controle de partículas com o uso do Modelo Preditivo de Controle. Esse projeto se trata de uma interdisciplinariedade entre os cursos de engenharia de computação, engenharia elétrica, física e matemática. Com o advento dessa pesquisa, projeta-se a instauração das disciplinas de Introdução a Computação Quântica e Introdução a Modelagem Matemática.
+Como estudante de engenharia de computação, se torna importante estudar os diferentes métodos de controle existentes no mercado e, através desse tópico, incentiva-se a pesquisa ao redor do controle de partículas com o uso do Modelo Preditivo de Controle. Esse projeto se trata de uma interdisciplinariedade entre os cursos de engenharia de computação, engenharia elétrica, física e matemática. Com o advento dessa pesquisa, projeta-se a instauração das disciplinas de Introdução a Computação Quântica, Introdução a Modelagem Matemática e Controle Robusto.
 
 ## Atividade 1 - Comportamento da onda
 
@@ -43,6 +43,8 @@ E a combinação está representada abaixo:
 <div align="center">
   <img src="results/first/curvas3.gif" />
 </div>
+
+A resposta com a combinação de 0 e 1 se torna importante pois se trata de um sistema de dois níveis, este que é muito importante para os estudos de mecânica quântica pois a maioria dos sitemas podem ser interpretados como um sistema de dois níveis, já que se trata de uma passagem de um estado ao outro.
 
 ----
 Resultados no espaço-tempo
