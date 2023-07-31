@@ -17,6 +17,7 @@ Como estudante de engenharia de computação, se torna importante estudar os dif
 1. [Atividade 1 - Comportamento da onda](#atividade-1---comportamento-da-onda)
 2. [Atividade 2 - Aproximação das derivadas](#atividade-2---aproximação-das-derivadas)
 3. [Atividade 3 - Realização do projeto de controle](#atividade-3---realização-do-projeto-de-controle)
+4. [Atividade 4 - Preparação de portas quânticas](#atividade-4---preparação-de-portas-quânticas)
 
 ## Atividade 1 - Comportamento da onda
 
@@ -211,38 +212,7 @@ Para esse controle do sistema utilizaremos um horizonte de análise de forma a p
   <img src="README-Img/fifth/rk_otimo4.png" />
 </div>	
 
-## Atividade 4 - Defasagem
-
-Ainda é necessário analisar de que forma o método de controle, baseado em otimização, causa a defasagem apresentada. Além disso, é interessante identificar se as constantes, após o controle, permancem dentro do limite já estabelecido, do qual a soma dos seus quadrados devem resultar em 1. 
-
-<div align="center">
-  <h3>Defasagens</h3>
-  <img src="README-Img/sixth/phases.png" />
-</div>
-
-<div align="center">
-  <h3>Constantes</h3>
-  <img src="README-Img/sixth/const.png" />
-</div>
-
-Conforme a teoria de computação quântica descrita no livro introdução a computação quântica de Thomas Wong (2022), quando a desafagem é a mesma em todas as componentes, não há um real significado físico não interferindo nos processos de análise. Além disso, com a segunda imagem é possível identificar que os coeficientes 0.80, em vermelho e 0.60 em azul, convergem para o valor em verde, $1/\sqrt{2}$.
-
-A fim de melhor representar as constantes acima, realizou-se um gráfico possuindo apenas os picos. É importante ressaltar que a diferença existente entre o gráfico da defasagem juntamente com as constantes em comparação aos gráficos de ajuste de curva real e imaginária acontecem pois nos gráficos acima não ocorrem a separação de número real e imaginário, eles são realizados com os números absolutos.
-
-<div align="center">
-  <h3>Constantes</h3>
-  <img src="README-Img/sixth/pico.png" />
-</div>
-
-Ademais, é necessário visualizar se a função objetivo realmente se aproxima da função destino plotando a diferença entre as curvas. A diferença mínima alcançada é de 0.08, próxima de zero.
-
-<div align="center">
-  <h3>Função objetivo</h3>
-  <img src="README-Img/sixth/obj.png" />
-</div>
-
-## Atividade 5 - Preparação das portas quânticas
-
+## Atividade 4 - Preparação de portas quânticas
 
 
 </div>
