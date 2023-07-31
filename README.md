@@ -14,9 +14,9 @@ Como estudante de engenharia de computação, se torna importante estudar os dif
 
 # Sumário
 
-1.[Atividade 1 - Comportamento da onda](#Atividade 1 - Comportamento da onda)
-2.[Atividade 2 - Aproximação das derivadas](#Atividade  2 - Aproximação das derivadas)
-3.[Atividade 3 - Realização do projeto de controle](#Atividade 3 - Realização do projeto de controle)
+1.[Atividade 1 - Comportamento da onda](#Atividade-1)
+2.[Atividade 2 - Aproximação das derivadas](#Atividade-2)
+3.[Atividade 3 - Realização do projeto de controle](#Atividade-3)
 
 ## Atividade 1 - Comportamento da onda
 
