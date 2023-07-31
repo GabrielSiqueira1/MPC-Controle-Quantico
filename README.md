@@ -14,9 +14,9 @@ Como estudante de engenharia de computação, se torna importante estudar os dif
 
 # Sumário
 
-1.[Atividade 1 - Comportamento da onda](#atividade-1---comportamento-da-onda)
-2.[Atividade 2 - Aproximação das derivadas](#atividade-2---aproximação-das-derivadas)
-3.[Atividade 3 - Realização do projeto de controle](#atividade-3---realização-do-projeto-de-controle)
+1. [Atividade 1 - Comportamento da onda](#atividade-1---comportamento-da-onda)
+2. [Atividade 2 - Aproximação das derivadas](#atividade-2---aproximação-das-derivadas)
+3. [Atividade 3 - Realização do projeto de controle](#atividade-3---realização-do-projeto-de-controle)
 
 ## Atividade 1 - Comportamento da onda
 
@@ -39,15 +39,15 @@ Resultados no espaço
 De acordo com a teoria proposta para a equação de Schrödinger, a solução para a equação pode ser determinada pela combinação linear de cada $\psi_n(x)$ para todo n pertencente aos naturais. Neste trabalho combinaremos a respostas em 0 e 1 com o valor constante de 0.80 e 0.60 suficiente para que a soma de seus quadrados dê 1. Abaixo estão as curvas com o polinômios de Hermite para graus maiores que 1.
 
 <div align="center"> 
-  <img src="results/first/griffiths.png" />
-  <img src="results/first/curvas.png" />
-  <img src="results/first/curvas2.gif" />
+  <img src="README-Img/first/griffiths.png" />
+  <img src="README-Img/first/curvas.png" />
+  <img src="README-Img/first/curvas2.gif" />
 </div>
 
 E a combinação está representada abaixo:
 
 <div align="center">
-  <img src="results/first/curvas3.gif" />
+  <img src="README-Img/first/curvas3.gif" />
 </div>
 
 A resposta com a combinação de 0 e 1 se torna importante pois se trata de um sistema de dois níveis, este que é muito importante para os estudos de mecânica quântica pois a maioria dos sitemas podem ser interpretados como um sistema de dois níveis, já que se trata de uma passagem de um estado ao outro.
@@ -59,23 +59,23 @@ Resultados no espaço-tempo
 Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s, dessa forma obtendo uma oscilação (Griffiths, David. 2011).
 
 <div align="center">
-  <img src="results/first/analiticalAnswer.gif" />
+  <img src="README-Img/first/analiticalAnswer.gif" />
 </div>
 
 ## Atividade 2 - Aproximação das derivadas
 
-Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC-Controle-Quantico/blob/main/demonstracao/demonstracao-CrankNicolson.pdf) pdf nesse repositório. Nesse método, ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo, entre o método de aproximação e a referência, além da representação dos erros absolutos e relativos.
+Para a segunda atividade foi necessário entender de que forma poderia se aproximar as derivadas para facilitar a sua utilização em laboratórios de controle. Para realizar essa tarefa, utilizou-se a aproximação de derivadas pelo método de Crank-Nicolson do qual está demonstrado em um [arquivo](https://github.com/GabrielSiqueira1/MPC-Controle-Quantico/blob/main/procedimento_demonstrativo_scn.pdf) pdf nesse repositório. Nesse método, ocorre uma aproximação por diferenças, especificamente uma média entre a aproximação posterior e anterior de um ponto relacionado. Abaixo está um gráfico comparativo, entre o método de aproximação e a referência, além da representação dos erros absolutos e relativos.
 
 <div align="center">
-  <img src="results/second/comparative2.gif" />
+  <img src="README-Img/second/comparative2.gif" />
 </div>
 
 <div align="center">
-  <img src="results/second/errors1.png" />
+  <img src="README-Img/second/errors1.png" />
 </div>
 
 <div align="center">
-  <img src="results/second/errors2.png" />
+  <img src="README-Img/second/errors2.png" />
 </div>
 
 Vale ressaltar que os erros dos quais realizam uma comparação com zero apresentam uma tendência a ir ao infinito devido a sua divisão, no entanto, isso não invalida a aproximação.
@@ -88,7 +88,8 @@ $$V(x,t) = 1/2mwx^2 + u(t)$$
 
 E o objetivo é:
 
-$$\Psi(x,t) = 0.80 \psi_0(x)e^{-iwt/2}+0.60\psi_1(x)e^{-3iwt/2} -> MPC -> \Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$$
+$$\Psi(x,t) = 0.80 \psi_0(x)e^{-iwt/2}+0.60\psi_1(x)e^{-3iwt/2} -> MPC ->
+\Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$$
 
 De modo que a seguinte operação resulte no menor valor possível:
 
@@ -100,18 +101,18 @@ A cada iteração, descobriremos qual é o melhor valor para u por meio de uma o
 
 Com gradiente:
 <div align="center">
-  <img src="results/third/100x100.gif" />
+  <img src="README-Img/third/100x100.gif" />
 </div>
 <div align="center">
-  <img src="results/third/200x200.gif" />
+  <img src="README-Img/third/200x200.gif" />
 </div>
 
 Com a biblioteca, em primeiro temos uma curva estacionária e em segundo, uma curva que há movimento temporal:
 <div align="center">
-  <img src="results/third/500x500_version1.gif" />
+  <img src="README-Img/third/500x500_version1.gif" />
 </div>
 <div align="center">
-  <img src="results/third/500x500_version2.gif" />
+  <img src="README-Img/third/500x500_version2.gif" />
 </div>
 
 Existe uma dificuldade de controlar essa curva visto que o V(x,t) oferece pouquissímos graus de liberdade para o controle ótimo, além disso há uma representação da curva em função do tempo e espaço o que é inviável pois o espaço de solução é $R^{2}$.
@@ -148,40 +149,40 @@ Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} =
 
 <div align="center">
   <h3>Gráfico - Real</h3>
-  <img src="results/fourth/real0.png" />
+  <img src="README-Img/fourth/real0.png" />
 </div>
 <div align="center">
-  <img src="results/fourth/real1.png" />
+  <img src="README-Img/fourth/real1.png" />
 </div>
 <div align="center">
   <h3>Gráfico - Imaginário</h3>
-  <img src="results/fourth/imag0.png" />
+  <img src="README-Img/fourth/imag0.png" />
 </div>
 <div align="center">
-  <img src="results/fourth/imag1.png" />
+  <img src="README-Img/fourth/imag1.png" />
 </div>
 
 O objetivo do controle é reduzir essa oscilação e tornar constante o valor para que alcansemos outro estado. No entanto, o processo analítico não é replicável em laboratório, dessa forma, devemos usar aproximações para a derivada. No arquivo Heisenberg-Euler-Runge_Kutta estabelece uma comparação entre os métodos e o Runge Kutta de quarto grau é o ideal para o avanço do trabalho.
 
 <div align="center">
   <h3>Gráfico - Real</h3>
-  <img src="results/fourth/rk_real0.png" />
+  <img src="README-Img/fourth/rk_real0.png" />
 </div>
     <div align="center">
-  <img src="results/fourth/rk_real1.png" />
+  <img src="README-Img/fourth/rk_real1.png" />
 </div>
 
 <div align="center">
   <h3>Gráfico - Imaginário</h3>
-  <img src="results/fourth/rk_imag0.png" />
+  <img src="README-Img/fourth/rk_imag0.png" />
 </div>
 <div align="center">
-  <img src="results/fourth/rk_imag1.png" />
+  <img src="README-Img/fourth/rk_imag1.png" />
 </div>
 
 <div align="center">
   <h3>Comparação</h3>
-  <img src="results/fourth/comparative.png" />
+  <img src="README-Img/fourth/comparative.png" />
 </div>
 
 ----
@@ -192,22 +193,22 @@ Para esse controle do sistema utilizaremos um horizonte de análise de forma a p
 
 <div align="center">
   <h3>Controle real para 0.80</h3>
-  <img src="results/fifth/rk_otimo1.png" />
+  <img src="README-Img/fifth/rk_otimo1.png" />
 </div>
 
 <div align="center">
   <h3>Controle imaginário para 0.80</h3>
-  <img src="results/fifth/rk_otimo2.png" />
+  <img src="README-Img/fifth/rk_otimo2.png" />
 </div>
 
 <div align="center">
   <h3>Controle real para 0.60</h3>
-  <img src="results/fifth/rk_otimo3.png" />
+  <img src="README-Img/fifth/rk_otimo3.png" />
 </div>
 
 <div align="center">
   <h3>Controle imaginário para 0.60</h3>
-  <img src="results/fifth/rk_otimo4.png" />
+  <img src="README-Img/fifth/rk_otimo4.png" />
 </div>	
 
 ## Atividade 4 - Defasagem
@@ -216,12 +217,12 @@ Ainda é necessário analisar de que forma o método de controle, baseado em oti
 
 <div align="center">
   <h3>Defasagens</h3>
-  <img src="results/sixth/phases.png" />
+  <img src="README-Img/sixth/phases.png" />
 </div>
 
 <div align="center">
   <h3>Constantes</h3>
-  <img src="results/sixth/const.png" />
+  <img src="README-Img/sixth/const.png" />
 </div>
 
 Conforme a teoria de computação quântica descrita no livro introdução a computação quântica de Thomas Wong (2022), quando a desafagem é a mesma em todas as componentes, não há um real significado físico não interferindo nos processos de análise. Além disso, com a segunda imagem é possível identificar que os coeficientes 0.80, em vermelho e 0.60 em azul, convergem para o valor em verde, $1/\sqrt{2}$.
@@ -230,14 +231,14 @@ A fim de melhor representar as constantes acima, realizou-se um gráfico possuin
 
 <div align="center">
   <h3>Constantes</h3>
-  <img src="results/sixth/pico.png" />
+  <img src="README-Img/sixth/pico.png" />
 </div>
 
 Ademais, é necessário visualizar se a função objetivo realmente se aproxima da função destino plotando a diferença entre as curvas. A diferença mínima alcançada é de 0.08, próxima de zero.
 
 <div align="center">
   <h3>Função objetivo</h3>
-  <img src="results/sixth/obj.png" />
+  <img src="README-Img/sixth/obj.png" />
 </div>
 
 ## Atividade 5 - Preparação das portas quânticas
