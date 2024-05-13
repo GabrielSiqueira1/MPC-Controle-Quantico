@@ -215,6 +215,13 @@ Nessa etapa foram utilizados três algoritmos de otimização, o L-BFGS-B, o Mé
   <img src="README-Img/seventh/horizonte-10-componentes.png" />
 </div>
 
+O ponto interessante do uso do MPC é a possibilidade de ajuste de horizonte e quanto maior, melhor será a aproximação da curvatura, no entanto, maior complexidade/força é demandada. Além dessas comparações, pode-se analisar as constantes do sistema quântico. Perceba que, por meio do gráfico abaixo, o horizonte 3 não alcança totalmente o valor 1.00, além disso, ele demora alguns segundos a mais, quando comparado a projeção de horizonte maior, para alcançar um valor objetivo.
+
+<div align="center">
+  <h3>Comparação entre os horizontes</h3>
+  <img src="README-Img/seventh/horizontes.png" />
+</div>
+
 ---
 
 ## Atividade 5 - MPC para sistemas quânticos abertos
