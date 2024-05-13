@@ -244,5 +244,5 @@ A primeira parcela representa o sistema quântico que se deseja manipular, enqua
 
 <div align="center">
   <h3>Fidelidade dos sistemas quânticos</h3>
-  <img src="README-Img/seventh/fid.png" />
+  <img width="70%" src="README-Img/seventh/fid.png" />
 </div>
