@@ -232,13 +232,25 @@ Dada a efetividade do controlador para sistemas fechados, torna-se necessário v
 
 $$ \frac{\partial \rho_t}{\partial t} = -i [H, \rho_t] + L(\rho_t) $$
 
-A equação de Lindblad e a equação de Schrödinger são correlatas, de modo que, ambas podem representar uma determinada situação de um sistema, seja pelo estado, $\psi(t)$ ou pela matriz de densidade $\rho_t$. A matriz de densidade pode ser definida como produto interno dos estados, $\rho_t = \ket{\psi(t)}\bra{\psi(t)}$, de forma que, a preparação de estados proposta anteriormente, iniciar em $1\ket{0}+0\ket{1}$ e alcançar o estado $0\ket{0}+1\ket{1}$, torne-se, iniciar em $\begin{bmatrix}
+A equação de Lindblad e a equação de Schrödinger são correlatas, de modo que, ambas podem representar uma determinada situação de um sistema, seja pelo estado, $\psi(t)$ ou pela matriz de densidade $\rho_t$. A matriz de densidade pode ser definida como produto interno dos estados, $\rho_t = \ket{\psi(t)}\bra{\psi(t)}$, de forma que, a preparação de estados proposta anteriormente, iniciar em $1\ket{0}+0\ket{1}$ e alcançar o estado $0\ket{0}+1\ket{1}$, torne-se, iniciar em
+
+$$
+\rho_0 =
+\left(\begin{array}{cc}
 1 & 0\\
 0 & 0
-\end{bmatrix}$ e alcançar $\begin{bmatrix}
+\end{array}\right)
+$$
+
+e alcançar
+
+$$
+\rho_f =
+\left(\begin{array}{cc}
 0 & 0\\
 0 & 1
-\end{bmatrix}$.
+\end{array}\right)
+$$
 
 A primeira parcela representa o sistema quântico que se deseja manipular, enquanto a segunda parcela, $L(\rho_t) = \sum_i \gamma [L_i\rho_t L_i^\dagger - \frac{1}{2}\{L_i^\dagger L_i, \rho\}]$, refere-se a atuação com o ambiente externo. Para um sistema simples, $L_i = \sigma_z/\sqrt{2}$, a matriz de pauli multiplicada por um fator. Sabendo que o experimento com sistemas fechados alcança uma fidelidade de $99{,}99\%$, abaixo, demonstra-se como o ambiente externo afeta tal fidelidade.
 
