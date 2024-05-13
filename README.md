@@ -17,7 +17,8 @@ Como estudante de engenharia de computação, se torna importante estudar os dif
 1. [Atividade 1 - Comportamento da onda](#atividade-1---comportamento-da-onda)
 2. [Atividade 2 - Aproximação das derivadas](#atividade-2---aproximação-das-derivadas)
 3. [Atividade 3 - Realização do projeto de controle](#atividade-3---realização-do-projeto-de-controle)
-4. [Atividade 4 - Preparação de portas quânticas](#atividade-4---preparação-de-portas-quânticas)
+4. [Atividade 4 - Preparação dos estados quânticos](#atividade-4---preparação-dos-estados-quânticos)
+5. [Atividade 5 - MPC para sistemas quânticos abertos](#atividade-5---MPC-para-sistemas-quânticos-abertos)
 
 ## Atividade 1 - Comportamento da onda
 
@@ -33,9 +34,9 @@ $$\psi_n(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\cdot H_n(x)\cdot \frac
 
 Para a modelagem da parte analítca utilizou-se os seguintes parâmetros: $\omega = \pi$, $\hbar = 1$ e $m = 1$.
 
-----
-Resultados no espaço
-----
+---
+
+## Resultados no espaço
 
 De acordo com a teoria proposta para a equação de Schrödinger, a solução para a equação pode ser determinada pela combinação linear de cada $\psi_n(x)$ para todo n pertencente aos naturais. Neste trabalho combinaremos a respostas em 0 e 1 com o valor constante de 0.80 e 0.60 suficiente para que a soma de seus quadrados dê 1. Abaixo estão as curvas com o polinômios de Hermite para graus maiores que 1.
 
@@ -53,9 +54,9 @@ E a combinação está representada abaixo:
 
 A resposta com a combinação de 0 e 1 se torna importante pois se trata de um sistema de dois níveis, este que é muito importante para os estudos de mecânica quântica pois a maioria dos sitemas podem ser interpretados como um sistema de dois níveis, já que se trata de uma passagem de um estado ao outro.
 
-----
-Resultados no espaço-tempo
-----
+---
+
+## Resultados no espaço-tempo
 
 Para concretizar e observar o resultado analítico devemos multiplicar por $e^{-i(n+1/2)\omega t}$ ambos os $\psi$'s, dessa forma obtendo uma oscilação (Griffiths, David. 2011).
 
@@ -89,18 +90,21 @@ $$V(x,t) = 1/2mwx^2 + u(t)$$
 
 E o objetivo é:
 
-$$\Psi(x,t) = 0.80 \psi_0(x)e^{-iwt/2}+0.60\psi_1(x)e^{-3iwt/2} -> MPC ->
-\Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})$$
+$$
+\Psi(x,t) = 0.80 \psi_0(x)e^{-iwt/2}+0.60\psi_1(x)e^{-3iwt/2} -> MPC ->
+\Psi_d(x,t)=1/\sqrt 2(\psi_0(x)e^{-iwt/2}+\psi_1(x)e^{-3iwt/2})
+$$
 
 De modo que a seguinte operação resulte no menor valor possível:
 
 $$E = \sum_{n = p}^{p+N_h}||\Psi_d(x,t) - \Psi_{i}^n(u, x,t)||^{2}$$
 
-A cada iteração, descobriremos qual é o melhor valor para u por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida do horizonte analisável. Para a primeira etapa seguiremos com o horizonte de tamanho 3, dessa forma, p começa em 0 e irá até 2 e na próxima iteração, começaremos em 1 até 3, sempre acumulando o  resultado anterior para o caso de $\psi$.
+A cada iteração, descobriremos qual é o melhor valor para u por meio de uma otimização não linear regida pela restrição da equação de Schrödinger. P, indicado pelo somatório é o ponto de partida do horizonte analisável. Para a primeira etapa seguiremos com o horizonte de tamanho 3, dessa forma, p começa em 0 e irá até 2 e na próxima iteração, começaremos em 1 até 3, sempre acumulando o resultado anterior para o caso de $\psi$.
 
 É uma análise custosa por causa da matriz 1000x1000 utilizada, já que estamos usando a resposta analítica e essa depende do espaço de x que é $R^{2}$. Para isso, fora realizado testes com matrizes de 100x100 até 500x500, sendo de 100x100 até 400x400 utilizando o método de otimização gradiente e a matriz 500x500 utilizou-se a otimização da biblioteca sympy com o método SLSQP.
 
 Com gradiente:
+
 <div align="center">
   <img src="README-Img/third/100x100.gif" />
 </div>
@@ -109,6 +113,7 @@ Com gradiente:
 </div>
 
 Com a biblioteca, em primeiro temos uma curva estacionária e em segundo, uma curva que há movimento temporal:
+
 <div align="center">
   <img src="README-Img/third/500x500_version1.gif" />
 </div>
@@ -124,27 +129,31 @@ $$\frac{\partial}{\partial t}\Psi = -\frac{iH}{\hbar}\Psi$$
 
 Ademais, é necessário transportar essa equação para a notação de bras e kets utilizada em controle, computação e mecânica quântica moderna.
 
-----
-Ket e Bras - Controle Quântico
-----
+---
+
+## Ket e Bras - Controle Quântico
 
 $$\frac{\partial}{\partial t}\\ket{\Psi} = -\frac{iH}{\hbar}\\ket{\Psi}$$
 
 Para a equação acima, a solução analítica se da por $\\ket{\Psi(t)} = e^{\frac{-iHt}{\hbar}}\\ket{\Psi_0}$, onde H é um hamiltoniano. Então teremos uma exponencial matricial, que deve ser resolvida por polinômio de Taylor. O Hamiltoniano abaixo foi desenvolvido a partir do livro do [Professor Piza (2003)](https://www.fisica.net/mecanica-quantica/mecanica_quantica_por_a_f_r_de_toledo_piza.pdf).
 
-$$H_0 = 
-\left(\begin{array}{cc} 
-0 & 0\\ 
+$$
+H_0 =
+\left(\begin{array}{cc}
+0 & 0\\
 0 & (\frac{-3i\pi t}{2} - \frac{-i\pi t}{2})
-\end{array}\right)$$
+\end{array}\right)
+$$
 
 Outro hamiltoniano possível é aquele em que as energias ficam na diagonal principal, dessa forma, obtemos:
 
-$$H_0 = 
-\left(\begin{array}{cc} 
-\frac{-i\pi t}{2} & 0\\ 
+$$
+H_0 =
+\left(\begin{array}{cc}
+\frac{-i\pi t}{2} & 0\\
 0 & \frac{-3i\pi t}{2}
-\end{array}\right)$$
+\end{array}\right)
+$$
 
 Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} = H_0\\ket{\Psi_0} = \\ket{\Psi(t)} = H_0(0.80\cdot\\ket 0 + 0.60\cdot\\ket 1)$, real e imaginário.
 
@@ -166,7 +175,7 @@ Portanto, os gráficos abaixo revelam o resultado da equação $\\ket{\Psi(t)} =
 O objetivo do controle é fazer com que qualquer outro estado consiga oscilar de acordo com o estado desejado. No entanto, o processo analítico não é replicável em laboratório, dessa forma, devemos usar aproximações para a derivada. O arquivo Heisenberg-Euler-Runge_Kutta, na pasta testes-iniciais, estabelece uma comparação entre o ideal e a aproximação realizada pelo algoritmo de Runge-Kutta.
 
 <div align="center">
-  <h3>Gráfico - Real</h3>
+  <h3>Gráfico - Real: Aproximação</h3>
   <img src="README-Img/fourth/rk_real0.png" />
 </div>
     <div align="center">
@@ -174,7 +183,7 @@ O objetivo do controle é fazer com que qualquer outro estado consiga oscilar de
 </div>
 
 <div align="center">
-  <h3>Gráfico - Imaginário</h3>
+  <h3>Gráfico - Imaginário: Aproximação</h3>
   <img src="README-Img/fourth/rk_imag0.png" />
 </div>
 <div align="center">
@@ -186,8 +195,28 @@ O objetivo do controle é fazer com que qualquer outro estado consiga oscilar de
   <img src="README-Img/fourth/comparative.png" />
 </div>
 
-----
+---
+
 ## Atividade 4 - Preparação dos estados quânticos
-----
 
+---
 
+Por meio da equação de erro, estabelecida na atividade anterior, $E = \sum_{n = p}^{p+N_h}||\Psi_d(x,t) - \Psi_{i}^n(u, x,t)||^{2}$, e limitando o valor do controle entre $-0{,}75 \leq u(t) \leq 0{,}75$ e utilizando os Hamiltonianos já testados, faz-se a preparação de estados. O objetivo é partir do estado $1\ket{0}+0\ket{1}$ e alcançar o estado $0\ket{0}+1\ket{1}$.
+
+Nessa etapa foram utilizados três algoritmos de otimização, o L-BFGS-B, o Método de Newton Truncado e a Evolução diferencial. Note que a equação de erro é ótima para algoritmos baseados em gradiente como os dois primeiros citados, no entanto, ambos apresentam diferenças de resultados, diferenças na escala de $10^{-3}$. Desse modo, as imagens a seguir estão relacionadas com o uso do algoritmo L-BFGS-B.
+
+<div align="center">
+  <h3>Horizonte 3</h3>
+  <img src="README-Img/seventh/horizonte-3-componentes.png" />
+</div>
+
+<div align="center">
+  <h3>Horizonte 10</h3>
+  <img src="README-Img/seventh/horizonte-10-componentes.png" />
+</div>
+
+---
+
+## Atividade 5 - MPC para sistemas quânticos abertos
+
+---
